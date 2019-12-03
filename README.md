@@ -25,3 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Api
+It is using OpenAPI to generate the endpoints. The definition file is in the root folder `openapi.json` file.
+When you add new definitions to this file please run `node_modules/.bin/ng-openapi-gen -i openapi.json`.

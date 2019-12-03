@@ -1,0 +1,149 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Friday API",
+    "version": "1.0.0",
+    "description": "This is the Friday API specification in which we will get makes, models and vehicles for completing the frontend task"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/api/makes": {
+      "get": {
+        "summary": "Fetches the available car makes to choose from.",
+        "description": "",
+        "operationId": "",
+        "responses": {
+          "200": {
+            "description": "An array of strings, each representing a unique car make.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "example": "Ford, Opel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/models": {
+      "get": {
+        "summary": "Fetches the available car models for the specified make.",
+        "description": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "make",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "",
+        "responses": {
+          "200": {
+            "description": "An array of strings, each representing a unique model of the specified make.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "example": "Explorer, Fiesta"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/vehicles": {
+      "get": {
+        "summary": "Fetches the available registered cars for the specified make and model.",
+        "description": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "make",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "model",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "",
+        "responses": {
+          "200": {
+            "description": "An Array of objects with the following properties",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Vehicle"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Vehicle": {
+        "type": "object",
+        "properties": {
+          "make": {
+            "description": "the make of the car",
+            "type": "string"
+          },
+          "model": {
+            "description": "the model of the car",
+            "type": "string"
+          },
+          "enginePowerPS": {
+            "description": "engine power in Horsepower units",
+            "type": "number"
+          },
+          "enginePowerPW": {
+            "description": "engine power in KiloWatts",
+            "type": "number"
+          },
+          "fuelType": {
+            "description": "fuel type",
+            "type": "string"
+          },
+          "bodyType": {
+            "description": "body type",
+            "type": "string"
+          },
+          "engineCapacity": {
+            "description": "engine capacity in cc",
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}
