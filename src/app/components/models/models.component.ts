@@ -1,15 +1,48 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, OnChanges, Output } from '@angular/core';
+import { ApiService } from 'src/app/api/services';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-models',
   templateUrl: './models.component.html',
   styleUrls: ['./models.component.scss']
 })
-export class ModelsComponent implements OnInit {
+export class ModelsComponent implements OnInit, OnChanges {
+  @Input() make: string;
+  @Output() selectedModel = new EventEmitter<string>();
 
-  constructor() { }
+  loading: boolean;
+  models: Array<string>;
+  errorState: boolean;
+  errorMessage: string;
+  modelsSubscription: Subscription;
+
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    this.loadModels();
   }
 
+  loadModels() {
+    this.loading = true;
+    this.errorState = false;
+    this.errorMessage = null;
+
+    this.modelsSubscription = this.apiService.apiModelsGet({ make: this.make }).subscribe(response => {
+      this.loading = false;
+      this.models = response.sort();
+    }, error => {
+      this.loading = false;
+      this.errorState = true;
+      this.errorMessage = error.message;
+    });
+  }
+
+  ngOnChanges() {
+    this.loadModels();
+  }
+
+  selectModel(selectedModel: string) {
+    this.selectedModel.emit(selectedModel);
+  }
 }

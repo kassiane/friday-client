@@ -1,1 +1,14 @@
-<p>models works!</p>
+<ng-container *ngIf="!errorState && !loading">
+  <div *ngFor="let model of models">
+    <div (click)="selectModel(model)">{{ model }}</div>
+  </div>
+  <div *ngIf="models.length == 0">
+      There are no models for this maker.
+  </div>
+</ng-container>
+<div *ngIf="errorState && !loading">
+  {{ errorMessage }}
+</div>
+<div *ngIf="loading">
+  Loading...
+</div>
