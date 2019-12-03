@@ -12,4 +12,7 @@ export class SelectCarComponent implements OnInit {
   ngOnInit() {
   }
 
+  loadModels(make: string) {
+    console.log('load models now');
+  }
 }

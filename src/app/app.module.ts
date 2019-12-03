@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { MakesComponent } from './components/makes/makes.component';
 import { ModelsComponent } from './components/models/models.component';
 import { VehiclesComponent } from './components/vehicles/vehicles.component';
+import { SelectCarComponent } from './navigation/select-car/select-car.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiModule } from './api/api.module';
 
 @NgModule({
   declarations: [
@@ -13,10 +16,13 @@ import { VehiclesComponent } from './components/vehicles/vehicles.component';
     MakesComponent,
     ModelsComponent,
     VehiclesComponent,
+    SelectCarComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ApiModule.forRoot({ rootUrl: 'http://localhost:8080' }),
   ],
   providers: [],
   bootstrap: [AppComponent]

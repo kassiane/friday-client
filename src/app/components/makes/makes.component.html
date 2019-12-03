@@ -1,1 +1,11 @@
-<p>makes works!</p>
+<ng-container *ngIf="!errorState && !loading">
+    <div *ngFor="let make of makes">
+        <div (click)="selectMake(make)">{{ make }}</div>
+    </div>
+</ng-container>
+<div *ngIf="errorState && !loading">
+    {{ errorMessage }}
+</div>
+<div *ngIf="loading">
+    Loading...
+</div>

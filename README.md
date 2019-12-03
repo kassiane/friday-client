@@ -29,3 +29,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Api
 It is using OpenAPI to generate the endpoints. The definition file is in the root folder `openapi.json` file.
 When you add new definitions to this file please run `node_modules/.bin/ng-openapi-gen -i openapi.json`.
+
+## Flex Layout
+It is using flex layout since we want it mobile friendly (first mobile). There are other options that could be used like Grid Layout.
