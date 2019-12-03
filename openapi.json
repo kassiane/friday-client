@@ -41,7 +41,7 @@
         "description": "",
         "parameters": [
           {
-            "in": "path",
+            "in": "query",
             "name": "make",
             "required": true,
             "schema": {
@@ -74,7 +74,7 @@
         "description": "",
         "parameters": [
           {
-            "in": "path",
+            "in": "query",
             "name": "make",
             "required": true,
             "schema": {
@@ -82,7 +82,7 @@
             }
           },
           {
-            "in": "path",
+            "in": "query",
             "name": "model",
             "required": true,
             "schema": {

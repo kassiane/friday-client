@@ -86,7 +86,7 @@ export class ApiService extends BaseService {
     const rb = new RequestBuilder(this.rootUrl, ApiService.ApiModelsGetPath, 'get');
     if (params) {
 
-      rb.path('make', params.make);
+      rb.query('make', params.make);
 
     }
     return this.http.request(rb.build({
@@ -136,8 +136,8 @@ export class ApiService extends BaseService {
     const rb = new RequestBuilder(this.rootUrl, ApiService.ApiVehiclesGetPath, 'get');
     if (params) {
 
-      rb.path('make', params.make);
-      rb.path('model', params.model);
+      rb.query('make', params.make);
+      rb.query('model', params.model);
 
     }
     return this.http.request(rb.build({
