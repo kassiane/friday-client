@@ -5,6 +5,7 @@ import { MakesComponent } from 'src/app/components/makes/makes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ModelsComponent } from 'src/app/components/models/models.component';
 import { VehiclesComponent } from 'src/app/components/vehicles/vehicles.component';
+import { ErrorComponent } from 'src/app/component/error/error.component';
 
 describe('SelectCarComponent', () => {
   let component: SelectCarComponent;
@@ -12,7 +13,7 @@ describe('SelectCarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SelectCarComponent, MakesComponent, ModelsComponent, VehiclesComponent],
+      declarations: [SelectCarComponent, MakesComponent, ModelsComponent, VehiclesComponent, ErrorComponent],
       imports: [HttpClientModule]
     })
       .compileComponents();

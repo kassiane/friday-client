@@ -3,5 +3,5 @@
     <app-models class="model-container" *ngIf="isMakeSelected" [make]="selectedMake" (selectedModel)="setModel($event)"></app-models>
 </div>
 <div>
-    <app-vehicles *ngIf="isMakeSelected && isModelSelected" [make]="selectedMake" [model]="selectedModel"></app-vehicles>
+    <app-vehicles class="vehicle-container" *ngIf="isMakeSelected && isModelSelected" [make]="selectedMake" [model]="selectedModel"></app-vehicles>
 </div>

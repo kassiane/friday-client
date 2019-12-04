@@ -27,6 +27,7 @@
 .list-item-selected {
     margin: 8px;
     padding: 16px;
+    border: 2px solid $main;
     background-color: $main;
     border-radius: 16px;
 }
@@ -34,6 +35,11 @@
 .list {
     display: flex;
     flex-flow: column wrap;
+}
+
+.list-row {
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .empty-list {
@@ -47,7 +53,4 @@
 }
 
 @media screen and (min-width: 800px) {
-    .list {
-        height: -webkit-fill-available;
-    }
 }

@@ -4,6 +4,7 @@ import { VehiclesComponent } from './vehicles.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from 'src/app/api/services';
 import { of, throwError } from 'rxjs';
+import { ErrorComponent } from 'src/app/component/error/error.component';
 
 const vehicles = [
   { make: 'FORD', model: 'Fiesta', enginePowerPS: 60, enginePowerKW: 44, fuelType: 'Benzin', bodyType: 'Limousine', engineCapacity: 1299 },
@@ -23,7 +24,7 @@ describe('VehiclesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [VehiclesComponent],
+      declarations: [VehiclesComponent, ErrorComponent],
       imports: [HttpClientModule],
       providers: [{ provide: ApiService, useValue: apiService }]
     })

@@ -4,6 +4,7 @@ import { ModelsComponent } from './models.component';
 import { of, throwError } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from 'src/app/api/services';
+import { ErrorComponent } from 'src/app/component/error/error.component';
 
 const modelsBMW: Array<string> = ['X1', 'X3', 'X4'];
 const modelsFord: Array<string> = ['ECOSPORT', 'Explorer', 'Fiesta'];
@@ -29,7 +30,7 @@ describe('ModelsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModelsComponent ],
+      declarations: [ ModelsComponent, ErrorComponent ],
       imports: [ HttpClientModule ],
       providers: [{provide: ApiService, useValue: apiService}]
     })

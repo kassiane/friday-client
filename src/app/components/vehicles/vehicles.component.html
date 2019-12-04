@@ -1,20 +1,33 @@
-<div *ngIf="!errorState && !loading" class="vehicle-container">
-  <div>Selected Maker: {{ make }}</div>
-  <div>Selected Model: {{ model }}</div>
-  <div *ngFor="let vehicle of vehicles" class="vehicle">
-      <div>{{ vehicle.fuelType }}</div>
-      <div>{{ vehicle.enginePowerPW }}</div>
-      <div>{{ vehicle.enginePowerPS }}</div>
-      <div>{{ vehicle.engineCapacity }}</div>
-      <div>{{ vehicle.bodyType }}</div>
-  </div>
-  <div *ngIf="vehicles.length == 0">
-    There are no vehicles for this maker/model.
-  </div>
+<div (click)="expanded = !expanded" [ngClass]="isSelected ? 'selected' : 'not-selected'">
+    <div *ngIf="!isSelected">Select your Vehicle...</div>
+    <div *ngIf="isSelected">
+        <div>Vehicle selected</div>
+        <div *ngIf="selected.fuelType">Fuel: {{ selected.fuelType }}</div>
+        <div *ngIf="selected.enginePowerPW">EPW: {{ selected.enginePowerPW }}</div>
+        <div *ngIf="selected.enginePowerPS">EPS: {{ selected.enginePowerPS }}</div>
+        <div *ngIf="selected.engineCapacity">EC: {{ selected.engineCapacity }}</div>
+        <div *ngIf="selected.bodyType">Body: {{ selected.bodyType }}</div>
+    </div>
 </div>
-<div *ngIf="errorState && !loading">
-  {{ errorMessage }}
-</div>
-<div *ngIf="loading">
-  Loading...
+<div *ngIf="expanded">
+    <div *ngIf="!errorState && !loading" class="list-row">
+        <div *ngFor="let vehicle of vehicles">
+            <div (click)="selectVehicle(vehicle)" [ngClass]="selected === vehicle ? 'list-item-selected' : 'list-item'">
+                <div *ngIf="vehicle.fuelType">Fuel: {{ vehicle.fuelType }}</div>
+                <div *ngIf="vehicle.enginePowerPW">EPW: {{ vehicle.enginePowerPW }}</div>
+                <div *ngIf="vehicle.enginePowerPS">EPS: {{ vehicle.enginePowerPS }}</div>
+                <div *ngIf="vehicle.engineCapacity">EC: {{ vehicle.engineCapacity }}</div>
+                <div *ngIf="vehicle.bodyType">Body: {{ vehicle.bodyType }}</div>
+            </div>
+        </div>
+        <div *ngIf="vehicles.length == 0" class="empty-list">
+          There are no vehicles for this maker/model.
+        </div>
+    </div>
+    <div *ngIf="errorState && !loading">
+      <app-error [errorMessage]="errorMessage"></app-error>
+    </div>
+    <div *ngIf="loading">
+        Loading...
+    </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'src/app/api/services';
 import { Subscription } from 'rxjs';
+import { retry } from 'rxjs/operators';
 
 @Component({
   selector: 'app-makes',
@@ -33,7 +34,7 @@ export class MakesComponent implements OnInit, OnDestroy {
     this.errorState = false;
     this.errorMessage = null;
 
-    this.makesSubscription = this.apiService.apiMakesGet().subscribe(response => {
+    this.makesSubscription = this.apiService.apiMakesGet().pipe(retry(3)).subscribe(response => {
       this.loading = false;
       this.makes = response.sort();
     }, error => {

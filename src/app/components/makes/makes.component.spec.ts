@@ -4,6 +4,7 @@ import { MakesComponent } from './makes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
 import { ApiService } from 'src/app/api/services';
+import { ErrorComponent } from 'src/app/component/error/error.component';
 
 const makes: Array<string> = ['AUDI', 'BMW', 'CHEVROLET'];
 
@@ -20,7 +21,7 @@ describe('MakesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MakesComponent ],
+      declarations: [ MakesComponent, ErrorComponent ],
       imports: [ HttpClientModule ],
       providers: [{provide: ApiService, useValue: apiService}]
     })

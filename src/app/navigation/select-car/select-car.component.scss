@@ -1,11 +1,4 @@
-.make-container {
-    margin: 5px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 2;
-}
-
-.model-container {
+.make-container, .model-container, .vehicle-container {
     margin: 5px;
     display: flex;
     flex-direction: column;

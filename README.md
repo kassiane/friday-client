@@ -32,3 +32,15 @@ When you add new definitions to this file please run `node_modules/.bin/ng-opena
 
 ## Flex Layout
 It is using flex layout since we want it mobile friendly (first mobile). There are other options that could be used like Grid Layout.
+
+## Retry (when api fails)
+Since the backend can be unstable from time to time I decided to retry the api calls automatically when it fails (maximum of 3 tries). If it keeps failing after those 3 tries, an error message is displayed.
+
+## TODO
+- fix layout for desktop
+- filter component: user should be able to type in an input and filter lists
+- filter vehicle by body and fuel types: can be a select for each filter
+- create an interceptor for api calls that will retry when it fails
+- add a nice hourglass for loading
+- add icons when lists are expanded or not
+- create a react app

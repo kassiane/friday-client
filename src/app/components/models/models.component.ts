@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, OnChanges, Output } from '@angular/core';
 import { ApiService } from 'src/app/api/services';
 import { Subscription } from 'rxjs';
+import { retry } from 'rxjs/operators';
 
 @Component({
   selector: 'app-models',
@@ -34,7 +35,7 @@ export class ModelsComponent implements OnInit, OnChanges {
     this.errorState = false;
     this.errorMessage = null;
 
-    this.modelsSubscription = this.apiService.apiModelsGet({ make: this.make }).subscribe(response => {
+    this.modelsSubscription = this.apiService.apiModelsGet({ make: this.make }).pipe(retry(3)).subscribe(response => {
       this.loading = false;
       this.models = response.sort();
     }, error => {
