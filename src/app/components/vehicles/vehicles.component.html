@@ -1,1 +1,20 @@
-<p>vehicles works!</p>
+<div *ngIf="!errorState && !loading" class="vehicle-container">
+  <div>Selected Maker: {{ make }}</div>
+  <div>Selected Model: {{ model }}</div>
+  <div *ngFor="let vehicle of vehicles" class="vehicle">
+      <div>{{ vehicle.fuelType }}</div>
+      <div>{{ vehicle.enginePowerPW }}</div>
+      <div>{{ vehicle.enginePowerPS }}</div>
+      <div>{{ vehicle.engineCapacity }}</div>
+      <div>{{ vehicle.bodyType }}</div>
+  </div>
+  <div *ngIf="vehicles.length == 0">
+    There are no vehicles for this maker/model.
+  </div>
+</div>
+<div *ngIf="errorState && !loading">
+  {{ errorMessage }}
+</div>
+<div *ngIf="loading">
+  Loading...
+</div>

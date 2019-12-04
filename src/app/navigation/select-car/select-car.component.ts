@@ -9,6 +9,7 @@ export class SelectCarComponent implements OnInit {
   isMakeSelected: boolean;
   selectedMake: string;
   isModelSelected: boolean;
+  selectedModel: string;
 
   constructor() { }
 
@@ -17,9 +18,15 @@ export class SelectCarComponent implements OnInit {
     this.isModelSelected = false;
   }
 
-  loadModels(make: string) {
+  setMaker(make: string) {
     this.isMakeSelected = true;
     this.selectedMake = make;
-    console.log('load models now');
+    this.isModelSelected = false;
+    this.selectedModel = null;
+  }
+
+  setModel(model: string) {
+    this.isModelSelected = true;
+    this.selectedModel = model;
   }
 }

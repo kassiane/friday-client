@@ -1,4 +1,7 @@
 <div class="make-and-model-container">
-    <app-makes class="make-container" (selectedMake)="loadModels($event)"></app-makes>
-    <app-models class="model-container" *ngIf="isMakeSelected" [make]="selectedMake"></app-models>
+    <app-makes class="make-container" (selectedMake)="setMaker($event)"></app-makes>
+    <app-models class="model-container" *ngIf="isMakeSelected" [make]="selectedMake" (selectedModel)="setModel($event)"></app-models>
+</div>
+<div>
+    <app-vehicles *ngIf="isMakeSelected && isModelSelected" [make]="selectedMake" [model]="selectedModel"></app-vehicles>
 </div>
