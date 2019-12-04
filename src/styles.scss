@@ -36,13 +36,14 @@
     flex-flow: column wrap;
 }
 
-.error {
+.empty-list {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin: 8px;
+    background-color: $contrast;
+    border-radius: 0px 0px 16px 16px;
+    margin: 0px 16px;
     padding: 16px;
-    background-color: $warning;
 }
 
 @media screen and (min-width: 800px) {

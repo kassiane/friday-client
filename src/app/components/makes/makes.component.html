@@ -8,8 +8,8 @@
             <div (click)="selectMake(make)" [ngClass]="selected === make ? 'list-item-selected' : 'list-item'" >{{ make }}</div>
         </div>
     </div>
-    <div *ngIf="errorState && !loading" class="error">
-        {{ errorMessage }}
+    <div *ngIf="errorState && !loading">
+        <app-error [errorMessage]="errorMessage"></app-error>
     </div>
     <div *ngIf="loading">
         Loading...

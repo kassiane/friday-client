@@ -7,12 +7,12 @@
         <div *ngFor="let model of models">
             <div (click)="selectModel(model)" class="list-item">{{ model }}</div>
         </div>
-        <div *ngIf="models.length == 0">
+        <div *ngIf="models.length == 0" class="empty-list">
             There are no models for this maker.
         </div>
       </div>
-    <div *ngIf="errorState && !loading" class="error">
-        {{ errorMessage }}
+    <div *ngIf="errorState && !loading">
+      <app-error [errorMessage]="errorMessage"></app-error>
     </div>
     <div *ngIf="loading">
         Loading...
