@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'src/app/api/services';
 import { Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-makes',
@@ -12,7 +11,10 @@ export class MakesComponent implements OnInit, OnDestroy {
   @Output() selectedMake = new EventEmitter<string>();
 
   loading: boolean;
+  expanded: boolean;
   makes: Array<string>;
+  selected: string;
+  isSelected: boolean;
   makesSubscription: Subscription;
   errorState: boolean;
   errorMessage: string;
@@ -20,6 +22,13 @@ export class MakesComponent implements OnInit, OnDestroy {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    this.loadMakes();
+  }
+
+  loadMakes() {
+    this.expanded = true;
+    this.isSelected = false;
+    this.selected = '';
     this.loading = true;
     this.errorState = false;
     this.errorMessage = null;
@@ -41,6 +50,9 @@ export class MakesComponent implements OnInit, OnDestroy {
   }
 
   selectMake(selectedMake: string) {
+    this.isSelected = true;
+    this.selected = selectedMake;
+    this.expanded = false;
     this.selectedMake.emit(selectedMake);
   }
 }

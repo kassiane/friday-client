@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'variables';
+
+.not-selected {
+    display: flex;
+    flex-direction: row;
+    background-color: $contrast;
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.selected {
+    display: flex;
+    flex-direction: row;
+    background-color: $main;
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.list-item {
+    margin: 8px;
+    padding: 16px;
+    border: 2px solid $contrast;
+    border-radius: 16px;
+}
+
+.list-item-selected {
+    margin: 8px;
+    padding: 16px;
+    background-color: $main;
+    border-radius: 16px;
+}
+
+.list {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.error {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 8px;
+    padding: 16px;
+    background-color: $warning;
+}
+
+@media screen and (min-width: 800px) {
+    .list {
+        height: -webkit-fill-available;
+    }
+}

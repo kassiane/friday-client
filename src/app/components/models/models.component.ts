@@ -12,7 +12,10 @@ export class ModelsComponent implements OnInit, OnChanges {
   @Output() selectedModel = new EventEmitter<string>();
 
   loading: boolean;
+  expanded: boolean;
   models: Array<string>;
+  selected: string;
+  isSelected: boolean;
   errorState: boolean;
   errorMessage: string;
   modelsSubscription: Subscription;
@@ -25,6 +28,9 @@ export class ModelsComponent implements OnInit, OnChanges {
 
   loadModels() {
     this.loading = true;
+    this.expanded = true;
+    this.isSelected = false;
+    this.selected = '';
     this.errorState = false;
     this.errorMessage = null;
 
@@ -43,6 +49,9 @@ export class ModelsComponent implements OnInit, OnChanges {
   }
 
   selectModel(selectedModel: string) {
+    this.isSelected = true;
+    this.selected = selectedModel;
+    this.expanded = false;
     this.selectedModel.emit(selectedModel);
   }
 }

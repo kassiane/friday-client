@@ -1,11 +1,17 @@
-<ng-container *ngIf="!errorState && !loading">
-    <div *ngFor="let make of makes">
-        <div (click)="selectMake(make)">{{ make }}</div>
-    </div>
-</ng-container>
-<div *ngIf="errorState && !loading">
-    {{ errorMessage }}
+<div (click)="expanded = !expanded" [ngClass]="isSelected ? 'selected' : 'not-selected'">
+    <div *ngIf="isSelected">Maker selected: {{ selected }}</div>
+    <div *ngIf="!isSelected">Select your maker...</div>
 </div>
-<div *ngIf="loading">
-    Loading...
+<div *ngIf="expanded">
+    <div *ngIf="!errorState && !loading" class="list">
+        <div *ngFor="let make of makes">
+            <div (click)="selectMake(make)" [ngClass]="selected === make ? 'list-item-selected' : 'list-item'" >{{ make }}</div>
+        </div>
+    </div>
+    <div *ngIf="errorState && !loading" class="error">
+        {{ errorMessage }}
+    </div>
+    <div *ngIf="loading">
+        Loading...
+    </div>
 </div>

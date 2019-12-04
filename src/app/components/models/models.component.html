@@ -1,14 +1,20 @@
-<ng-container *ngIf="!errorState && !loading">
-  <div *ngFor="let model of models">
-    <div (click)="selectModel(model)">{{ model }}</div>
-  </div>
-  <div *ngIf="models.length == 0">
-      There are no models for this maker.
-  </div>
-</ng-container>
-<div *ngIf="errorState && !loading">
-  {{ errorMessage }}
+<div (click)="expanded = !expanded" [ngClass]="isSelected ? 'selected' : 'not-selected'">
+    <span *ngIf="isSelected">Model selected: {{ selected }}</span>
+    <span *ngIf="!isSelected">Select your model...</span>
 </div>
-<div *ngIf="loading">
-  Loading...
+<div *ngIf="expanded">
+    <div *ngIf="!errorState && !loading" class="list">
+        <div *ngFor="let model of models">
+            <div (click)="selectModel(model)" class="list-item">{{ model }}</div>
+        </div>
+        <div *ngIf="models.length == 0">
+            There are no models for this maker.
+        </div>
+      </div>
+    <div *ngIf="errorState && !loading" class="error">
+        {{ errorMessage }}
+    </div>
+    <div *ngIf="loading">
+        Loading...
+    </div>
 </div>
